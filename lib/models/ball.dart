@@ -1,9 +1,9 @@
 class Ball {
-  double zad;
+  double angle;
   int runs;
 
   Ball({
-    required this.zad,
+    required this.angle,
     required this.runs,
   });
 }

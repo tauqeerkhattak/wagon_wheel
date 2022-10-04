@@ -1,39 +1,80 @@
-<!--
-This README describes the package. If you publish this package to pub.dev,
-this README's contents appear on the landing page for your package.
 
-For information about how to write a good package README, see the guide for
-[writing package pages](https://dart.dev/guides/libraries/writing-package-pages).
-
-For general information about developing packages, see the Dart guide for
-[creating packages](https://dart.dev/guides/libraries/create-library-packages)
-and the Flutter guide for
-[developing packages and plugins](https://flutter.dev/developing-packages).
--->
-
-TODO: Put a short description of the package here that helps potential users
-know whether this package might be useful for them.
-
-## Features
-
-TODO: List what your package can do. Maybe include images, gifs, or videos.
+A new Flutter package to create a custom wagon wheel widget for cricket applications.
 
 ## Getting started
 
-TODO: List prerequisites and provide or point to information on how to
-start using the package.
+To use this package, first download it using the following command:
+
+```
+flutter pub add wagon_wheel
+```
+
+And run:
+
+```
+flutter pub get
+```
+
+Finally,
+
+```dart
+import 'package:wagon_wheel/models/ball.dart';
+import 'package:wagon_wheel/wagon_wheel.dart';
+```
 
 ## Usage
 
-TODO: Include short and useful examples for package users. Add longer examples
-to `/example` folder.
+To use this package, first create a list of balls:
 
 ```dart
-const like = 'sample';
+List <Ball> balls = [];
 ```
 
+And then in the initState of your StatefulWidget
+
+```dart
+@override
+  void initState() {
+    super.initState();
+    for (int i = 0; i < 15; i++) {
+      balls.add(
+        Ball(
+          angle: (20 * i).toDouble(),
+          runs: i % 3 == 0 ? 4 : 6,
+        ),
+      );
+    }
+  }
+```
+
+After this step, you will be able to use the WagonWheel widget in your build method:
+
+```dart
+WagonWheel(
+    balls: balls,
+    fourColor: Colors.blue,
+    sixColor: Colors.red,
+    isInverse: true,
+    background: Stack(
+        children: [
+            Container(
+                color: Colors.green,
+            ),
+            Center(
+                child: Container(
+                    width: 10,
+                    height: 60,
+                    color: Colors.amberAccent,
+                ),
+            ),
+        ],
+    ),
+),
+```
+
+This will give you the following UI:
+
+![Image](https://github.com/tauqeerkhattak/wagon_wheel/blob/main/Screenshot_1664881199.png "a title")
 ## Additional information
 
-TODO: Tell users more about the package: where to find more information, how to
-contribute to the package, how to file issues, what response they can expect
-from the package authors, and more.
+As of now, this package only supports lines for 4 and 6. Work is being done to add support to all shots that are played around the field. Till then, please filter out all the shots that are not either 4 or a 6.

@@ -39,6 +39,7 @@ class WagonWheel extends StatelessWidget {
             values: balls,
             sixColor: sixColor,
             fourColor: fourColor,
+            isInverse: isInverse,
           ),
           child: background,
         ),
